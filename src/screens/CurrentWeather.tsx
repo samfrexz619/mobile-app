@@ -2,24 +2,33 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Feather } from '@expo/vector-icons'
+import RowText from '../components/RowText';
 
 const CurrentWeather =()=> {
+
+  const {wrapper, container, highLow, highlowWrapper, temp, feels} = styles
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
-        <Feather name='sun' color={'white'} size={100} />
+    <SafeAreaView style={wrapper}>
+      <View style={container}>
+        <Feather name='sun' color={'#000'} size={100} />
         {/* <Text>Current Weather</Text> */}
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>feels like 5</Text>
-        <View style={styles.highlowWrapper}>
-          <Text style={styles.highLow}>High: 8 </Text>
-          <Text style={styles.highLow}>Low: 6</Text>
-        </View>
+        <Text style={temp}>6</Text>
+        <Text style={feels}>feels like 5</Text>
+        <RowText  
+          msg='High: 8'
+          msg2='Low: 6'
+          msgStyles={highLow}
+          msg2Styles={highLow}
+          containerStyles={highlowWrapper}
+        />
       </View>
-      <View style={styles.bodyWrapper}>
-        <Text style={styles.desc}>It&apos;s sunny</Text>
-        <Text style={styles.msg}>It&apos;s perfect t-shirt weather</Text>
-      </View>
+      <RowText  
+        msg='It&apos;s sunny'
+        msg2='It&apos;s perfect t-shirt weather'
+        msgStyles={styles.desc}
+        msg2Styles={styles.msg}
+        containerStyles={styles.bodyWrapper}
+      />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -32,21 +41,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   wrapper: {
-    backgroundColor: '#133E53',
+    backgroundColor: 'pink',
     flex: 1,
   },
   temp: {
     fontSize: 40,
-    color: '#fff',
+    color: '#000',
     // paddingTop: 20
   },
   feels: {
     fontSize: 27,
-    color: '#fff'
+    color: '#000'
   },
   highLow: {
     fontSize: 18,
-    color: '#fff'
+    color: '#000'
   },
   highlowWrapper: {
     flexDirection: 'row',
@@ -59,11 +68,11 @@ const styles = StyleSheet.create({
   },
   desc: {
     fontSize: 30,
-    color: '#fff'
+    color: '#000'
   },
   msg: {
     fontSize: 18,
-    color: '#fff'
+    color: '#000'
   },
 });
 
