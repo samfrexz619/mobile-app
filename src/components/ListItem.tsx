@@ -12,12 +12,14 @@ type ListProps = {
 }
 
 const ListItem = ({ dt_txt, min, max }: ListProps) => {
+
+  const { date, temp, item } = styles
   return ( 
-    <View style={styles.item}>
+    <View style={item}>
       <Feather name='sun' color={'white'} size={40} />
-      <Text style={styles.date}>{ dt_txt }</Text>
-      <Text style={styles.temp}>{ min }</Text>
-      <Text style={styles.temp}>{ max }</Text>
+      <Text style={date}>{ dt_txt }</Text>
+      <Text style={temp}>{ min }</Text>
+      <Text style={temp}>{ max }</Text>
       {/* <Text>{ condition}</Text> */}
     </View>
    );
