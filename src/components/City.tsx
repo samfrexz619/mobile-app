@@ -50,7 +50,7 @@ const City = () => {
           />
           <IconText 
             iconColor='white' 
-            iconName='sunrise' 
+            iconName='sunset' 
             bodyText='10:46:58am' 
             bodyTextStlyes={riseSetText}
           />

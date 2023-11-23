@@ -13,22 +13,22 @@ const Tab = createBottomTabNavigator()
 const Tabs = () => {
   return ( 
     <Tab.Navigator
-        screenOptions={{
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'grey',
-          tabBarStyle: {
-            backgroundColor: 'lightblue'
-          },
-          headerStyle: {
-            backgroundColor: 'lightblue'
-          },
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            fontSize: 25,
-            color: 'tomato'
-          }
-        }}
-      >
+      screenOptions={{
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'grey',
+        tabBarStyle: {
+          backgroundColor: 'lightblue'
+        },
+        headerStyle: {
+          backgroundColor: 'lightblue'
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize: 25,
+          color: 'tomato'
+        }
+      }}
+    >
         <Tab.Screen 
           name='Current' 
           component={CurrentWeather}
@@ -50,7 +50,7 @@ const Tabs = () => {
             tabBarIcon: ({focused}) => (<Feather name='home' size={25} color={focused ? 'tomato' : 'black'}  />)
           }} 
         />
-      </Tab.Navigator>
+     </Tab.Navigator>
    );
 }
  

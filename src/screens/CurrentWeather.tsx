@@ -3,6 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 import RowText from '../components/RowText';
+import { weatherType } from '../utils/weatherType';
+
+
+
 
 const CurrentWeather =()=> {
 
@@ -12,7 +16,6 @@ const CurrentWeather =()=> {
     <SafeAreaView style={wrapper}>
       <View style={container}>
         <Feather name='sun' color={'#000'} size={100} />
-        {/* <Text>Current Weather</Text> */}
         <Text style={temp}>6</Text>
         <Text style={feels}>feels like 5</Text>
         <RowText  
@@ -25,7 +28,7 @@ const CurrentWeather =()=> {
       </View>
       <RowText  
         msg='It&apos;s sunny'
-        msg2='It&apos;s perfect t-shirt weather'
+        msg2={weatherType['Thunderstorm'].msg}
         msgStyles={styles.desc}
         msg2Styles={styles.msg}
         containerStyles={styles.bodyWrapper}
