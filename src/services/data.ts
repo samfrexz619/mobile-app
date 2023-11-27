@@ -38,3 +38,5 @@ export const DATA: Data[] = [
     ]
   },
 ]
+
+export const api = 'http://api.openweathermap.org/data/2.5/forecast'

@@ -4,31 +4,47 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 import RowText from '../components/RowText';
 import { weatherType } from '../utils/weatherType';
+import { List } from '../lib/types';
 
 
 
 
-const CurrentWeather =()=> {
+interface Prop {
+  weatherInfo: List;
+}
 
-  const {wrapper, container, highLow, highlowWrapper, temp, feels} = styles
+const CurrentWeather =({ weatherInfo }: Prop)=> {
+
+  const { main: {temp, feels_like, temp_max, temp_min}, weather} = weatherInfo
+
+  const {wrapper, container, highLow, highlowWrapper, tempStyle, feels} = styles
   
+  const weatherCondition = weather[0].main
+
+  console.log(weatherCondition);
+  
+
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondition].backgroundColor}]}>
       <View style={container}>
-        <Feather name='sun' color={'#000'} size={100} />
-        <Text style={temp}>6</Text>
-        <Text style={feels}>feels like 5</Text>
+        <Feather 
+          name={weatherType[weatherCondition].icon} 
+          color={'#fff'} 
+          size={100} 
+        />
+        <Text style={tempStyle}>{temp}</Text>
+        <Text style={feels}>feels like 5: {feels_like}</Text>
         <RowText  
-          msg='High: 8'
-          msg2='Low: 6'
+          msg={`High: ${temp_max}`}
+          msg2={`Low: ${temp_min}`}
           msgStyles={highLow}
           msg2Styles={highLow}
           containerStyles={highlowWrapper}
         />
       </View>
       <RowText  
-        msg='It&apos;s sunny'
-        msg2={weatherType['Thunderstorm'].msg}
+        msg={weather[0].description}
+        msg2={weatherType[weatherCondition].msg}
         msgStyles={styles.desc}
         msg2Styles={styles.msg}
         containerStyles={styles.bodyWrapper}
@@ -48,7 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
     flex: 1,
   },
-  temp: {
+  tempStyle: {
     fontSize: 40,
     color: '#000',
     // paddingTop: 20

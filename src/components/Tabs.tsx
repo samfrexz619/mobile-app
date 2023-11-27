@@ -4,13 +4,18 @@ import { Feather } from '@expo/vector-icons';
 import City from '../components/City';
 import CurrentWeather from '../screens/CurrentWeather';
 import UpcomingWeather from '../screens/UpcomingWeather';
+import { WeatherData } from '../lib/types';
 
 
+
+interface Prop {
+  weather: WeatherData;
+}
 
 
 const Tab = createBottomTabNavigator()
 
-const Tabs = () => {
+const Tabs = ({ weather }: Prop) => {
   return ( 
     <Tab.Navigator
       screenOptions={{
@@ -31,11 +36,13 @@ const Tabs = () => {
     >
         <Tab.Screen 
           name='Current' 
-          component={CurrentWeather}
+          // component={CurrentWeather}
           options={{
             tabBarIcon: ({focused}) => (<Feather name='droplet' size={25} color={focused ? 'tomato' : 'black'}  />)
           }}
-        />
+        >
+          {()=> <CurrentWeather weatherInfo={weather.list[0]} />}
+        </Tab.Screen>
         <Tab.Screen 
           name='Upcoming' 
           component={UpcomingWeather} 
