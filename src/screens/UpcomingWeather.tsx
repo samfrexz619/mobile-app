@@ -1,11 +1,15 @@
 import React from 'react'
-import { StyleSheet, Text, SafeAreaView, FlatList, StatusBar, ImageBackground } from 'react-native'
+import { StyleSheet, SafeAreaView, FlatList, StatusBar, ImageBackground } from 'react-native'
 import ListItem from '../components/ListItem';
-import { ItemProps } from '../lib/types';
-import { DATA } from '../services/data';
+import { ItemProps, List } from '../lib/types';
+// import { DATA } from '../services/data';
 
 
-const UpcomingWeather = () => {
+
+interface Props {
+  weatherInfo: List[];
+}
+const UpcomingWeather = ({ weatherInfo }: Props) => {
 
   const renderItem = ({ item }: ItemProps)=> (
     <ListItem 
@@ -23,9 +27,9 @@ const UpcomingWeather = () => {
         source={require('../../assets/images/upcoming-bg.jpg')} 
         style={image}
         >
-        <Text>Upcoming Weather</Text>
+        {/* <Text>Upcoming Weather</Text> */}
         <FlatList
-          data={DATA}
+          data={weatherInfo}
           renderItem={renderItem}
           keyExtractor={item => item.dt_txt}
         />

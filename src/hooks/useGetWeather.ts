@@ -17,7 +17,7 @@ export const useGetWeather =()=> {
   const fetchWeatherData = async()=> {
     try {
       const res = await fetch(
-        `${api}?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
+        `${api}?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
       )
       const data = await res.json()
       setWeather(data)
