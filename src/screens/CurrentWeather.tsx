@@ -33,10 +33,10 @@ const CurrentWeather =({ weatherInfo }: Prop)=> {
           size={100} 
         />
         <Text style={tempStyle}>{temp}</Text>
-        <Text style={feels}>feels like 5: {feels_like}</Text>
+        <Text style={feels}>feels like 5: {feels_like}°</Text>
         <RowText  
-          msg={`High: ${temp_max}`}
-          msg2={`Low: ${temp_min}`}
+          msg={`High: ${temp_max}° `}
+          msg2={`Low: ${temp_min}°`}
           msgStyles={highLow}
           msg2Styles={highLow}
           containerStyles={highlowWrapper}

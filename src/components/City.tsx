@@ -6,16 +6,24 @@ import {
   ImageBackground, 
   View,
   StatusBar } from 'react-native'
-  // import { Feather } from '@expo/vector-icons'
+import moment from 'moment'
 import IconText from './IconText'
+import { City as CityProp } from '../lib/types'
 
 
-const City = () => {
+
+interface Prop {
+  weatherInfo: CityProp;
+}
+
+const City = ({ weatherInfo}: Prop) => {
+
+  const {name, population, sunrise, sunset, country} = weatherInfo
 
   const { 
     cityText, 
     cityName, 
-    country, 
+    countryStyle, 
     container,
     image,
     populatnWrapper,
@@ -31,13 +39,13 @@ const City = () => {
         source={require('../../assets/images/city-bg.jpg')}
         style={image}
       >
-        <Text style={[cityName, cityText]}>London</Text>
-        <Text style={[country, cityText]}>UK</Text>
+        <Text style={[cityName, cityText]}>{ name }</Text>
+        <Text style={[countryStyle, cityText]}>{ country }</Text>
         <View style={[populatnWrapper, rowLayout]}>
           <IconText 
             iconColor='red' 
             iconName='user' 
-            bodyText='8000' 
+            bodyText={`Population: ${population}`} 
             bodyTextStlyes={poplatnText}
           />
         </View>
@@ -45,13 +53,13 @@ const City = () => {
           <IconText 
             iconColor='white' 
             iconName='sunrise' 
-            bodyText='10:46:58am' 
+            bodyText={moment(sunrise).format('h:mm:ss a')} 
             bodyTextStlyes={riseSetText}
           />
           <IconText 
             iconColor='white' 
             iconName='sunset' 
-            bodyText='10:46:58am' 
+            bodyText={moment(sunset).format('h:mm:ss a')} 
             bodyTextStlyes={riseSetText}
           />
         </View>
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
   cityName: {
     fontSize: 35,
   },
-  country: {
+  countryStyle: {
     fontSize: 25
   },
   cityText: {

@@ -54,11 +54,13 @@ const Tabs = ({ weather }: Prop) => {
         </Tab.Screen>
         <Tab.Screen 
           name='City' 
-          component={City}
+          // component={City}
           options={{
             tabBarIcon: ({focused}) => (<Feather name='home' size={25} color={focused ? 'tomato' : 'black'}  />)
           }} 
-        />
+        >
+          {()=> <City weatherInfo={weather.city} />}
+        </Tab.Screen>
      </Tab.Navigator>
    );
 }

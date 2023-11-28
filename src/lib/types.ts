@@ -52,13 +52,13 @@ type Coord = {
   lon: number;
 }
 
-type City = {
-  id: number;
+export type City = {
+  id?: number;
   name: string;
-  coord: Coord;
+  coord?: Coord;
   country: string;
   population: number;
-  timezone: number;
+  timezone?: number;
   sunrise: number;
   sunset: number;
 }
