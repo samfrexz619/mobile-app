@@ -19,16 +19,16 @@ const CurrentWeather =({ weatherInfo }: Prop)=> {
 
   const {wrapper, container, highLow, highlowWrapper, tempStyle, feels} = styles
   
-  const weatherCondition = weather[0].main
+  const weatherCondition = weather[0]?.main
 
   console.log(weatherCondition);
   
 
   return (
-    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondition].backgroundColor}]}>
+    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondition]?.backgroundColor}]}>
       <View style={container}>
         <Feather 
-          name={weatherType[weatherCondition].icon} 
+          name={weatherType[weatherCondition]?.icon} 
           color={'#fff'} 
           size={100} 
         />
@@ -43,8 +43,8 @@ const CurrentWeather =({ weatherInfo }: Prop)=> {
         />
       </View>
       <RowText  
-        msg={weather[0].description}
-        msg2={weatherType[weatherCondition].msg}
+        msg={weather[0]?.description}
+        msg2={weatherType[weatherCondition]?.msg}
         msgStyles={styles.desc}
         msg2Styles={styles.msg}
         containerStyles={styles.bodyWrapper}
